@@ -25,7 +25,7 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:h-20">
         <Logo />
 
-        <nav className="hidden items-center gap-7 whitespace-nowrap lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-5 whitespace-nowrap lg:flex xl:gap-7" aria-label="Main">
           {navLinks.map((link) =>
             link.children ? (
               <DesktopDropdown key={link.href} link={link} active={isActive(link.href)} pathname={pathname} />

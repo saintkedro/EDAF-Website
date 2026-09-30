@@ -89,6 +89,16 @@ export const navLinks: NavLink[] = [
       { href: "/projects/community-development", label: "Community Development" },
     ],
   },
+  {
+    href: "/events",
+    label: "Events",
+    children: [
+      { href: "/events", label: "All events" },
+      { href: "/events/public-lecture", label: "Annual Public Lecture" },
+      { href: "/events/christmas-carol", label: "Christmas Carol" },
+    ],
+  },
+  { href: "/gallery", label: "Gallery" },
   { href: "/ict-hub", label: "ICT Hub" },
   { href: "/contact", label: "Contact" },
 ];
@@ -564,3 +574,47 @@ export const ictHub = {
     ],
   },
 };
+
+export type EventSeriesSlug = "public-lecture" | "christmas-carol";
+
+export type EventSeries = {
+  slug: EventSeriesSlug;
+  title: string;
+  shortTitle: string;
+  summary: string;
+  facts: { label: string; value: string }[];
+  icon: string;
+};
+
+export const eventSeries: EventSeries[] = [
+  {
+    slug: "public-lecture",
+    title: "Sir Edet Amana Annual Public Lecture",
+    shortTitle: "Annual Public Lecture",
+    summary:
+      "An annual public lecture organised by the Edet Amana Foundation in partnership with the Nigerian Society of Engineers (NSE), Oron Branch.",
+    facts: [
+      { label: "Organised by", value: "Edet Amana Foundation" },
+      { label: "In partnership with", value: "Nigerian Society of Engineers, Oron Branch" },
+      { label: "Held", value: "Every year" },
+    ],
+    icon: "Award",
+  },
+  {
+    slug: "christmas-carol",
+    title: "Annual Christmas Carol at Oyubia",
+    shortTitle: "Christmas Carol",
+    summary:
+      "An annual Christmas carol at Oyubia, where choirs from Christian denominations feature and compete for prizes.",
+    facts: [
+      { label: "Where", value: "Oyubia, Oron" },
+      { label: "Who takes part", value: "Choirs from Christian denominations" },
+      { label: "Prizes", value: "Awarded to the winning choirs" },
+    ],
+    icon: "Community",
+  },
+];
+
+export function getEventSeries(slug: string) {
+  return eventSeries.find((series) => series.slug === slug);
+}

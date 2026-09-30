@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SeriesCard } from "@/components/events";
 import HubPromo from "@/components/HubPromo";
 import { ButtonLink, Eyebrow, Icon, Pattern, ProgrammeMedia, SectionHeading } from "@/components/ui";
 import {
   aboutSummary,
+  eventSeries,
   founder,
   getInvolved,
   objectives,
@@ -216,6 +218,26 @@ export default function Home() {
       </section>
 
       <HubPromo />
+
+      <section className="bg-navy-50">
+        <div className="mx-auto max-w-6xl px-6 py-16 sm:py-24">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionHeading
+              eyebrow="Annual events"
+              title="Bringing the community together"
+              intro="Two events on the Foundation's calendar every year."
+            />
+            <ButtonLink href="/events" variant="outline">
+              See all events
+            </ButtonLink>
+          </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {eventSeries.map((series) => (
+              <SeriesCard key={series.slug} series={series} />
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="relative overflow-hidden bg-navy-950">
         <Pattern />
